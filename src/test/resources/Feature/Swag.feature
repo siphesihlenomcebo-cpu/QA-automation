@@ -4,6 +4,7 @@ Feature: SwagLabs Login
  Validate if user can Login with invalid username and valid password
  Validate if user can Login with valid username and invalid password
  Validate if user can Login with invalid username and invalid password
+ Validate if user can Login with empty username and  password
  verify that user can add product to cart and verify
  Verify user can add multiple products to cart
 
@@ -27,6 +28,17 @@ Feature: SwagLabs Login
     Examples:
       | username    | password         | errorMessage                                                              |
       | standard_   |secret_sauce      | Epic sadface: Username and password do not match any user in this service |
+
+
+  Scenario Outline:  Validate if user can Login with empty username and  password
+    Given User is on SwagLabs page
+    When User enters username "<username>"
+    And User enters password "<password>"
+    And User clicks login button
+    Then Error message "<errorMessage>" should be displayed
+    Examples:
+      | username    | password | errorMessage                       |
+      |             |          | Epic sadface: Username is required |
 
   Scenario Outline: Validate if user can Login with valid username and invalid password
     Given User is on SwagLabs page

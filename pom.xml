@@ -93,7 +93,6 @@
 <!--    </dependency>-->
 
 <!--</project>-->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -110,6 +109,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <!-- ================= DEPENDENCIES ================= -->
     <dependencies>
 
         <!-- Apache POI -->
@@ -151,7 +151,7 @@
             <version>7.13.0</version>
         </dependency>
 
-        <!-- Selenium (KEEP ONLY ONE VERSION) -->
+        <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -200,6 +200,28 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- JUnit 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
+
+    <!-- ================= BUILD ================= -->
+    <build>
+        <plugins>
+
+            <!-- Maven Surefire Plugin (JUnit reports) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>
