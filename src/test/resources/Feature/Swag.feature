@@ -19,6 +19,7 @@ Feature: SwagLabs Login
       | username       | password     |
       | standard_user  | secret_sauce |
 
+    
   Scenario Outline:  Validate if user can Login with invalid username and valid password
     Given User is on SwagLabs page
     When User enters username "<username>"
@@ -40,6 +41,7 @@ Feature: SwagLabs Login
       | username    | password | errorMessage                       |
       |             |          | Epic sadface: Username is required |
 
+
   Scenario Outline: Validate if user can Login with valid username and invalid password
     Given User is on SwagLabs page
     When User enters username "<username>"
@@ -49,6 +51,7 @@ Feature: SwagLabs Login
     Examples:
       | username      | password     | errorMessage                                                              |
       | standard_user |secret_s      | Epic sadface: Username and password do not match any user in this service |
+
 
   Scenario Outline: verify that user can add product to cart
     Given User is on SwagLabs page
