@@ -12,15 +12,12 @@ public class DriverFactory {
 
     public static WebDriver driver;
 
-
     public static WebDriver initDriver() {
-
 
         try {
 
             String username = ConfigReader.get("lt.username");
             String accesskey = ConfigReader.get("lt.accesskey");
-
 
             if (username == null || username.isEmpty() ||
                     accesskey == null || accesskey.isEmpty()) {
@@ -28,24 +25,26 @@ public class DriverFactory {
             }
 
             ChromeOptions browserOptions = new ChromeOptions();
+
             browserOptions.setPlatformName(ConfigReader.get("lt.platform"));
             browserOptions.setBrowserVersion(ConfigReader.get("lt.browserVersion"));
 
-            HashMap<String,Object>ltOptions = new HashMap<>();
+            HashMap<String, Object> ltOptions = new HashMap<>();
 
             ltOptions.put("username", username);
             ltOptions.put("accessKey", accesskey);
-            ltOptions.put("project", ConfigReader.get("project"));
-            ltOptions.put("build", ConfigReader.get("build"));
-            ltOptions.put("name", ConfigReader.get("SwagLabs Automation"));
-            ltOptions.put("plugin","java-java");
-            ltOptions.put("w3c", true);
             ltOptions.put("visual", true);
             ltOptions.put("video", true);
+            ltOptions.put("build", ConfigReader.get("build"));
+            ltOptions.put("project", ConfigReader.get("project"));
+            ltOptions.put("name", "Swag Labs Login Test");
+            ltOptions.put("tags", new String[]{"login", "swag-labs", "selenium"});
             ltOptions.put("console", "error");
+            ltOptions.put("w3c", true);
+            browserOptions.setCapability("LT:Options", ltOptions);
 
             driver = new RemoteWebDriver(
-                    new URL("https://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub"),
+                    new URL("https://hub.lambdatest.com/wd/hub"),
                     browserOptions
             );
 
@@ -64,4 +63,3 @@ public class DriverFactory {
         }
     }
 }
-

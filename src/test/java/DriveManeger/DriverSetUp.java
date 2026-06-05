@@ -71,8 +71,8 @@ public class DriverSetUp {
                     HashMap<String, Object> ltOptions = new HashMap<>();
                     ltOptions.put("username", username);
                     ltOptions.put("accessKey", accessKey);
-                    ltOptions.put("build", "SwagLabs Build");
-                    ltOptions.put("name", "LambdaTest Run");
+                    ltOptions.put("build", "Swag Labs Build");
+                    ltOptions.put("name", "Swag Labs Login Test");
 
                     browserOptions.setCapability("LT:Options", ltOptions);
 

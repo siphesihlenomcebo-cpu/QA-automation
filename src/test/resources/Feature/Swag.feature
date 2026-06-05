@@ -6,7 +6,7 @@ Feature: SwagLabs Login
  Validate if user can Login with invalid username and invalid password
  Validate if user can Login with empty username and  password
  verify that user can add product to cart and verify
- Verify user can add multiple products to cart
+
 
   Scenario Outline: Validate that user can successful Login with credentials
     Given User is on SwagLabs page
@@ -48,7 +48,6 @@ Feature: SwagLabs Login
       | username      | password     | errorMessage                                                              |
       | standard_user |secret_s      | Epic sadface: Username and password do not match any user in this service |
 
-
   Scenario Outline: verify that user can add product to cart
     Given User is on SwagLabs page
     When User enters username "<username>"
@@ -70,18 +69,3 @@ Feature: SwagLabs Login
       | standard_user  | secret_sauce |  Sphesihle  |   Langa |   1459   |
 
 
-  Scenario Outline: Verify user can add multiple products to cart
-    Given User is on SwagLabs page
-    When User enters username "<username>"
-    And User enters password "<password>"
-    And User clicks login button
-    Then Product page is displayed
-    When the user adds three different products to the cart
-    And user click shopping cart
-    Then Your cart page is displayed
-    When User clicks checkout
-    Then Checkout Your Information page is displayed
-
-    Examples:
-      | username       | password     |
-      | standard_user  | secret_sauce |

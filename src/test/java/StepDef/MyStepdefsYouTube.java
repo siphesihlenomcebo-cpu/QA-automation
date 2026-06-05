@@ -15,12 +15,13 @@ import static org.junit.Assert.assertTrue;
 
 public class MyStepdefsYouTube {
 
-    WebDriver driver = Hooks.driver;
+    WebDriver driver;
 
     @Given("User is on YouTube homepage")
     public void userIsOnYouTubeHomepage()
     {
 //        driver = DriverSetUp.getDriver("CHROME");
+        driver = Hooks.driver;
         driver.get("https://www.youtube.com/");
     }
     @When("User searches for video {string}")

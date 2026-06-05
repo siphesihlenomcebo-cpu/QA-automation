@@ -13,19 +13,19 @@ import static Repos.Objects.*;
 
 public class MyStepdefs {
 
-    WebDriver driver  = Hooks.driver;
+    WebDriver driver;
 
     @Given("User is on SwagLabs page")
-    public void userIsOnSwagLabsPage()
-    {
+    public void userIsOnSwagLabsPage()  {
 //        driver = DriverSetUp.getDriver("CHROME");
         driver = Hooks.driver;
         driver.get("https://www.saucedemo.com/");
+        System.out.println(driver.getCurrentUrl());
     }
 
     @When("User enters username {string}")
-    public void userEntersUsername(String username)
-    {
+    public void userEntersUsername(String username) throws InterruptedException {
+        Thread.sleep(2000);
         driver.findElement(slUsername).sendKeys(username);
     }
 
